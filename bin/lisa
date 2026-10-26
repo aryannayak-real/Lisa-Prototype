@@ -1,0 +1,16 @@
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$HOME/Lisa-FreeAI" || exit 1
+
+KEY_FILE="$HOME/.lisa/api_key"
+if [ ! -s "$KEY_FILE" ]; then
+    echo "Lisa: API key missing. Save your OpenRouter key first."
+    exit 1
+fi
+
+export LISA_AI_BASE_URL="https://openrouter.ai/api/v1"
+export LISA_AI_MODEL="openrouter/free"
+export LISA_AI_PROVIDER="OpenRouter"
+export LISA_AI_API_KEY="$(cat "$KEY_FILE")"
+
+CP="$(gradle -q printRuntimeClasspath)" || exit 1
+exec java -cp "$CP" com.lisa.ai.MainKt

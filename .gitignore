@@ -1,0 +1,14 @@
+.gradle/
+build/
+out/
+*.class
+*.jar
+local.properties
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+*.bak
+*.before-*
